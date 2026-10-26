@@ -35,15 +35,11 @@ go2rtc:
       - 172.16.0.57:8555
   streams:
     # --------------------------------------------------------------------------
-    # 1. CÁMARA DEMO / STREAM EN VIVO (Zócalo CDMX / HLS Test)
     # --------------------------------------------------------------------------
     # Activa de inmediato sin necesidad de hardware físico.
     # Emite señal HLS 24/7 procesada por ffmpeg para visualización y prueba de NVR.
     # Si tienes 'yt-dlp' instalado en el host o contenedor, puedes usar:
     #   - "exec:yt-dlp -g https://www.youtube.com/@webcamsdemexico/live"
-    zocalo_cdmx:
-      - "ffmpeg:https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8#video=copy#audio=aac"
-
     # --------------------------------------------------------------------------
     # 2. CÁMARAS DISPOSITIVOS MÓVILES ANDROID (Entrada / Acceso e Interior)
     # --------------------------------------------------------------------------
@@ -62,18 +58,7 @@ go2rtc:
 
 cameras:
   # ============================================================================
-  # CÁMARA DEMO / ZÓCALO CDMX (HABILITADA POR DEFECTO PARA PRUEBAS)
   # ============================================================================
-  zocalo_cdmx:
-    enabled: true
-    ffmpeg:
-      inputs:
-        - path: rtsp://127.0.0.1:8554/zocalo_cdmx
-          roles:
-            - record
-    record:
-      enabled: true
-
   # ============================================================================
   # CÁMARA 1 (ENTRADA / TORNICUETE RFID) - TELÉFONO ANDROID 1
   # ============================================================================

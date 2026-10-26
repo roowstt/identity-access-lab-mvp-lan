@@ -7,7 +7,7 @@ services:
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Copia .env.example a .env}
       KC_HTTP_ENABLED: "true"
       KC_HEALTH_ENABLED: "true"
-      KC_HOSTNAME: http://172.16.0.57:8081
+      KC_HOSTNAME: http://192.168.1.172:8081
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:?Falta OIDC_CLIENT_SECRET}
       DEMO_PASSWORD_ENGINEER: ${DEMO_PASSWORD_ENGINEER:?Falta DEMO_PASSWORD_ENGINEER}
       DEMO_PASSWORD_AUDITOR: ${DEMO_PASSWORD_AUDITOR:?Falta DEMO_PASSWORD_AUDITOR}
@@ -35,7 +35,7 @@ services:
     environment:
       APP_SECRET: ${APP_SECRET:?Falta APP_SECRET}
       APP_DB: /srv/data/lab.sqlite
-      APP_BASE_URL: ${APP_BASE_URL:-http://localhost:8000}
+      APP_BASE_URL: ${APP_BASE_URL:-http://192.168.1.172:8000}
       SCIM_TOKEN: ${SCIM_TOKEN:?Falta SCIM_TOKEN}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID:-identity-access-app}
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:?Falta OIDC_CLIENT_SECRET}
@@ -88,7 +88,7 @@ services:
       FRIGATE_CAM_PORT: ${FRIGATE_CAM_PORT:-8080}
     volumes:
       - ./frigate/config:/config
-      - frigate_storage:/media/frigate
+      - ./frigate/storage:/media/frigate
       - type: tmpfs
         target: /tmp/cache
         tmpfs:
@@ -103,4 +103,3 @@ services:
 volumes:
   app_data:
   keycloak_data:
-  frigate_storage:
