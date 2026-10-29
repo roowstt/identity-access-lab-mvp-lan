@@ -38,7 +38,7 @@ def create_app():
     )
     base = os.environ.get("APP_BASE_URL", "http://localhost:8000").rstrip("/")
     scim_token = os.environ["SCIM_TOKEN"]
-    if len(app.secret_key) < 32 or len(scim_token) < 32 or not base.startswith(("http://localhost", "http://172.16.0.57:", "https://")):
+    if len(app.secret_key) < 32 or len(scim_token) < 32 or not base.startswith(("http://localhost", "http://192.168.", "http://10.", "http://172.", "https://")):
         raise RuntimeError("Configura secretos de 32+ caracteres y APP_BASE_URL localhost HTTP o HTTPS")
     app.config["SESSION_COOKIE_SECURE"] = base.startswith("https://")
     store = Store(os.environ.get("APP_DB", "data/lab.sqlite"))

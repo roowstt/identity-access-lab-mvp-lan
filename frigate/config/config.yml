@@ -32,7 +32,7 @@ birdseye:
 go2rtc:
   webrtc:
     candidates:
-      - 172.16.0.57:8555
+      - 192.168.1.172:8555
   streams:
     # --------------------------------------------------------------------------
     # --------------------------------------------------------------------------
@@ -57,6 +57,19 @@ go2rtc:
       # - "ffmpeg:http://{FRIGATE_CAM_USER}:{FRIGATE_CAM_PASS}@{FRIGATE_CAM_INTERIOR_IP}:{FRIGATE_CAM_PORT}/video#video=h264"
 
 cameras:
+  ip_cam:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: http://{FRIGATE_CAM_USER}:{FRIGATE_CAM_PASS}@172.16.5.196:8080/video
+          input_args: preset-http-mjpeg-generic
+          roles:
+            - detect
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+      fps: 5
   # ============================================================================
   # ============================================================================
   # ============================================================================

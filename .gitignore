@@ -20,3 +20,5 @@ frigate/config/.vacuum
 frigate/storage/
 frigate/config/*
 !frigate/config/config.yml
+
+backups/
