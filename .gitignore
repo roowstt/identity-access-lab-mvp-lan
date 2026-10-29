@@ -22,3 +22,9 @@ frigate/config/*
 !frigate/config/config.yml
 
 backups/
+
+.env
+backups/
+*.bak
+*.tgz
+eventos_rfid.csv
